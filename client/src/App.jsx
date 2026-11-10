@@ -108,8 +108,26 @@ export default function App() {
 }
 
 function AppRoutes() {
+  const { user, loading } = useAuth();
+
   return (
     <Routes>
+      {/* Root route: guests see standalone LandingPage; authenticated users see MainLayout with FeedPage */}
+      <Route
+        path="/"
+        element={
+          loading ? (
+            <Spinner fullScreen />
+          ) : user ? (
+            <MainLayout>
+              <FeedPage />
+            </MainLayout>
+          ) : (
+            <LandingPage />
+          )
+        }
+      />
+
       {/* Guest only authentication routes */}
       <Route element={<GuestOnlyRoute />}>
         <Route path="/login" element={<Login />} />
@@ -124,7 +142,7 @@ function AppRoutes() {
 
       {/* Main app layout with sidebars and navigation */}
       <Route element={<MainLayout />}>
-        <Route index element={<HomeRoute />} />
+        <Route path="feed" element={<FeedPage />} />
         <Route path="explore" element={<ExplorePage />} />
 
         <Route

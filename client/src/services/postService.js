@@ -47,7 +47,6 @@ export const getPostsByUsername = async (
   return data;
 };
 
-export const getExplorePosts = explorePosts;
 export const explorePosts = async ({
   cursor,
   limit = EXPLORE_PAGE_LIMIT,
@@ -64,6 +63,8 @@ export const explorePosts = async ({
   });
   return data;
 };
+
+export const getExplorePosts = explorePosts;
 
 export const toggleLike = async (postId) => {
   const { data } = await api.post(`/posts/${postId}/like`);

@@ -18,7 +18,7 @@ import RightSidebar from "./RightSidebar.jsx";
  *   Right: discovery rail with who-to-follow & trending (xl:block).
  *   Mobile/Tablet: top navbar & mobile bottom tab bar.
  */
-export default function MainLayout() {
+export default function MainLayout({ children }) {
   const { user } = useAuth();
   const online = useOnlineStatus();
 
@@ -64,7 +64,7 @@ export default function MainLayout() {
               </div>
             }
           >
-            <Outlet />
+            {children || <Outlet />}
           </Suspense>
         </main>
 
