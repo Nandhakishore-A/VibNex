@@ -5,7 +5,7 @@
 
 services:
   - type: web
-    name: social-platform-api
+    name: vibnex-api
     runtime: node
     plan: free
     region: frankfurt
