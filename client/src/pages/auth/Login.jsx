@@ -10,8 +10,8 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const [identifier, setIdentifier] = useState("admin@vibnex.dev");
-  const [password, setPassword] = useState("VibnexAdmin2026!");
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [loading, setLoading] = useState(false);

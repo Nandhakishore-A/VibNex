@@ -40,13 +40,24 @@ app.set("trust proxy", 1);
 app.use(helmet({ contentSecurityPolicy: false }));
 
 // 3. Multi-origin CORS — supports main frontend + standalone admin panel.
-const allowedOrigins = [env.CLIENT_URL, env.ADMIN_URL].filter(Boolean);
+const parseOrigins = (val) =>
+  typeof val === "string" ? val.split(",").map((s) => s.trim()).filter(Boolean) : [];
+
+const allowedOrigins = [
+  ...parseOrigins(env.CLIENT_URL),
+  ...parseOrigins(env.ADMIN_URL),
+].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin) || !env.isProduction) {
+      if (
+        allowedOrigins.includes(origin) ||
+        !env.isProduction ||
+        origin.endsWith(".vercel.app") ||
+        origin.includes("localhost")
+      ) {
         return callback(null, true);
       }
       return callback(new Error("CORS origin not allowed"), false);

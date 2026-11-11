@@ -306,8 +306,8 @@ function PostCard({
       <article
         aria-busy={likeBusy || removing || undefined}
         className={cn(
-          "group rounded-2xl border border-zinc-200/90 bg-white transition-all duration-200 dark:border-white/[0.08] dark:bg-gradient-to-b dark:from-[#221F30] dark:to-[#1B1926]",
-          "hover:border-purple-300 hover:shadow-md dark:hover:border-purple-500/30 dark:hover:shadow-lg dark:hover:shadow-purple-950/20",
+          "group rounded-2xl border border-slate-200/90 bg-white transition-all duration-200 dark:border-slate-800/90 dark:bg-gradient-to-b dark:from-[#0E1520] dark:to-[#070A0F]",
+          "hover:border-cyan-400/40 hover:shadow-lg dark:hover:border-cyan-500/40 dark:hover:shadow-xl dark:hover:shadow-cyan-950/30",
           isCompact ? "p-3.5" : "p-5",
           removing && "motion-safe:animate-shrink-out",
           className

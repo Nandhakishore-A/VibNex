@@ -448,7 +448,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/80 backdrop-blur-xl dark:border-white/[0.08] dark:bg-[#171522]/85 shadow-xs">
+      <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl dark:border-slate-800/80 dark:bg-[#070A0F]/85 shadow-xs">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6">
           <Link
             to="/"
@@ -486,7 +486,7 @@ export default function Navbar() {
                 }}
                 placeholder="Search users…"
                 aria-label="Search users"
-                className="w-full rounded-full border border-zinc-200/80 bg-zinc-50/80 py-1.5 pl-9 pr-3 text-sm placeholder:text-zinc-400 transition-all duration-fast focus:border-purple-400 focus:bg-white focus:ring-2 focus:ring-purple-500/20 dark:border-white/10 dark:bg-[#22202E]/70 dark:focus:border-purple-400 dark:focus:bg-[#22202E]"
+                className="w-full rounded-full border border-slate-200/80 bg-slate-50/80 py-1.5 pl-9 pr-3 text-sm placeholder:text-zinc-400 transition-all duration-fast focus:border-cyan-400 focus:bg-white focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-800 dark:bg-[#0E1520]/80 dark:focus:border-cyan-400 dark:focus:bg-[#0E1520]"
               />
               <SearchPopover
                 open={desktopSearchOpen}
@@ -518,7 +518,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   to="/register"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-600 px-3 py-1.5 text-sm font-medium text-white shadow-xs transition-colors duration-fast hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-400"
+                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-3.5 py-1.5 text-sm font-bold text-slate-950 shadow-md shadow-cyan-500/20 transition-all duration-fast hover:from-cyan-300 hover:to-teal-300 hover:shadow-cyan-500/30"
                 >
                   Sign up
                 </Link>
@@ -552,8 +552,8 @@ export default function Navbar() {
             aria-label="New post"
             className="-mt-5 flex w-14 items-center justify-center"
           >
-            <span className="flex size-12 items-center justify-center rounded-full bg-brand-600 text-white shadow-md transition-transform duration-fast hover:bg-brand-700 motion-safe:active:scale-95 dark:bg-brand-500 dark:hover:bg-brand-400">
-              <Plus className="size-5" aria-hidden="true" />
+            <span className="flex size-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-bold shadow-lg shadow-cyan-500/25 transition-transform duration-fast hover:from-cyan-300 hover:to-teal-300 motion-safe:active:scale-95">
+              <Plus className="size-6 stroke-[2.5]" aria-hidden="true" />
             </span>
           </NavLink>
           <NavLink to="/notifications" className={tabClass} aria-label="Notifications">

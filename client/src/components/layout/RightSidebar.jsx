@@ -52,19 +52,19 @@ export default function RightSidebar() {
       {/* Who to follow card */}
       <section
         aria-labelledby="who-to-follow-heading"
-        className="rounded-2xl border border-zinc-200/80 bg-white p-4.5 shadow-xs dark:border-white/[0.08] dark:bg-gradient-to-b dark:from-[#221F30] dark:to-[#1B1926]"
+        className="rounded-2xl border border-slate-200/80 bg-white p-4.5 shadow-xs dark:border-slate-800/80 dark:bg-gradient-to-b dark:from-[#0E1520] dark:to-[#070A0F]"
       >
-        <div className="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+        <div className="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-slate-800/80">
           <h2
             id="who-to-follow-heading"
             className="flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-zinc-100"
           >
-            <Sparkles className="size-4 text-brand-500" aria-hidden="true" />
+            <Sparkles className="size-4 text-cyan-400" aria-hidden="true" />
             Who to follow
           </h2>
           <Link
             to="/explore"
-            className="text-xs font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+            className="text-xs font-semibold text-cyan-500 hover:text-cyan-400 dark:text-cyan-400 dark:hover:text-cyan-300"
           >
             Explore
           </Link>
@@ -130,10 +130,10 @@ export default function RightSidebar() {
       {/* Trending Topics card */}
       <section
         aria-labelledby="trending-heading"
-        className="rounded-2xl border border-zinc-200/80 bg-white p-4.5 shadow-xs dark:border-white/[0.08] dark:bg-gradient-to-b dark:from-[#221F30] dark:to-[#1B1926]"
+        className="rounded-2xl border border-slate-200/80 bg-white p-4.5 shadow-xs dark:border-slate-800/80 dark:bg-gradient-to-b dark:from-[#0E1520] dark:to-[#070A0F]"
       >
-        <div className="flex items-center gap-2 pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
-          <TrendingUp className="size-4 text-brand-500" aria-hidden="true" />
+        <div className="flex items-center gap-2 pb-3 border-b border-zinc-100 dark:border-slate-800/80">
+          <TrendingUp className="size-4 text-cyan-400" aria-hidden="true" />
           <h2
             id="trending-heading"
             className="text-sm font-bold text-zinc-900 dark:text-zinc-100"
@@ -142,7 +142,7 @@ export default function RightSidebar() {
           </h2>
         </div>
 
-        <ul className="mt-2 divide-y divide-zinc-100 dark:divide-zinc-800/60">
+        <ul className="mt-2 divide-y divide-zinc-100 dark:divide-slate-800/60">
           {TRENDING_TOPICS.map((topic) => (
             <li key={topic.tag}>
               <Link
@@ -150,7 +150,7 @@ export default function RightSidebar() {
                 className="group flex flex-col py-2.5 transition-colors hover:opacity-80"
               >
                 <span className="text-[11px] text-zinc-400">{topic.category}</span>
-                <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-brand-500">
+                <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-cyan-400">
                   {topic.tag}
                 </span>
                 <span className="text-[11px] text-zinc-500">{topic.count}</span>

@@ -133,22 +133,22 @@ cd VibNex
 ```
 
 ### 2. Configure Environment Variables
-Inside `server/.env`:
+Create `.env` inside `server/` using `server/.env.example` as a template:
 ```env
 PORT=5000
 NODE_ENV=development
-MONGO_URI=mongodb+srv://nandhakishore252_db_user:yyBku6bEPqLgeT0z@cluster0.9dyssq7.mongodb.net/VibNex?retryWrites=true&w=majority
-JWT_SECRET=vibnex_jwt_secret_super_secure_key_2026_at_least_32_chars
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/VibNex?retryWrites=true&w=majority
+JWT_SECRET=your_super_secret_jwt_key_at_least_32_characters
 JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
 ADMIN_URL=http://localhost:5174
-CLOUDINARY_CLOUD_NAME=zsfupefr
-CLOUDINARY_API_KEY=956281599364653
-CLOUDINARY_API_SECRET=UJ5UEJgFVt17dwgd4vAK3YQ_6HM
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 CLOUDINARY_FOLDER=mern_stack_project_storage/VibNex
 ADMIN_EMAIL=admin@vibnex.dev
 ADMIN_USERNAME=vibnexadmin
-ADMIN_PASSWORD=VibnexAdmin2026!
+ADMIN_PASSWORD=your_secure_admin_password
 ```
 
 Inside `client/.env`:

@@ -249,7 +249,7 @@ export default function FeedPage() {
           <button
             type="button"
             onClick={refreshFromTop}
-            className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 py-1.5 text-sm font-medium text-white shadow-md transition-colors duration-fast hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:bg-brand-500 dark:hover:bg-brand-400 dark:focus-visible:ring-offset-zinc-950"
+            className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-4 py-1.5 text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/25 transition-all duration-fast hover:from-cyan-300 hover:to-teal-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <ArrowUp className="size-4" aria-hidden="true" />
             {newCount === 1
@@ -329,7 +329,7 @@ export default function FeedPage() {
             For more, check out the{" "}
             <Link
               to="/explore"
-              className="font-medium text-brand-600 hover:underline dark:text-brand-400"
+              className="font-semibold text-cyan-400 hover:text-cyan-300 hover:underline"
             >
               Explore
             </Link>{" "}

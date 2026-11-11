@@ -379,7 +379,7 @@ export default function CreatePostForm({
     return (
       <div
         className={cn(
-          "flex items-center gap-3 rounded-2xl border border-zinc-200/80 bg-white p-3.5 shadow-xs transition-all duration-fast hover:border-purple-300 dark:border-white/[0.08] dark:bg-gradient-to-b dark:from-[#221F30] dark:to-[#1B1926] dark:hover:border-purple-500/30",
+          "flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-xs transition-all duration-fast hover:border-cyan-400/40 dark:border-slate-800/80 dark:bg-gradient-to-b dark:from-[#0E1520] dark:to-[#070A0F] dark:hover:border-cyan-500/40",
           className
         )}
       >
@@ -425,7 +425,7 @@ export default function CreatePostForm({
         onDrop={onDrop}
         aria-busy={submitting || undefined}
         className={cn(
-          "relative rounded-2xl border border-zinc-200/80 bg-white p-4 shadow-sm transition-all duration-fast motion-safe:animate-fade-up dark:border-purple-500/25 dark:bg-gradient-to-b dark:from-[#221F30] dark:to-[#1B1926] dark:shadow-lg dark:shadow-purple-950/20",
+          "relative rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm transition-all duration-fast motion-safe:animate-fade-up dark:border-cyan-500/30 dark:bg-gradient-to-b dark:from-[#0E1520] dark:to-[#070A0F] dark:shadow-xl dark:shadow-cyan-950/20",
           className
         )}
       >

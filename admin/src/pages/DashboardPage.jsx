@@ -84,14 +84,14 @@ export default function DashboardPage() {
       {/* Top Banner & Refresh CTA */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/25 bg-purple-500/10 px-3 py-1 text-2xs font-semibold text-purple-300 mb-2">
-            <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>MongoDB Atlas Cluster Live: cluster0.lsat1p6.mongodb.net</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3 py-1 text-2xs font-semibold text-cyan-300 mb-2">
+            <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
+            <span>MongoDB Atlas Cluster Active</span>
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-white">
-            Platform <span className="admin-gradient-text">Overview</span>
+            Platform <span className="text-cyan-400">Overview</span>
           </h1>
-          <p className="text-xs text-[#A7A0BE] mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Real-time telemetry and moderation performance for the VIBNEX network.
           </p>
         </div>
@@ -267,14 +267,14 @@ export default function DashboardPage() {
             <div className="rounded-2xl border border-white/5 bg-[#13111C]/60 p-3.5">
               <div className="flex items-center justify-between text-xs">
                 <span className="flex items-center gap-2 text-white font-semibold">
-                  <Cloud className="size-3.5 text-sky-400" />
-                  Cloudinary Media
+                  <Cloud className="size-3.5 text-cyan-400" />
+                  Cloudinary Media CDN
                 </span>
-                <span className="rounded-full bg-sky-500/10 px-2 py-0.5 text-[10px] font-bold text-sky-300 border border-sky-500/20">
+                <span className="rounded-full bg-cyan-500/10 px-2 py-0.5 text-[10px] font-bold text-cyan-300 border border-cyan-500/20">
                   READY
                 </span>
               </div>
-              <p className="mt-1 text-[11px] text-[#787095]">cblqllb4 • avatars & posts</p>
+              <p className="mt-1 text-[11px] text-[#787095]">Media storage • avatars & posts</p>
             </div>
 
             <div className="rounded-2xl border border-white/5 bg-[#13111C]/60 p-3.5">
