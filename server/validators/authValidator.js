@@ -78,11 +78,9 @@ const passwordRule = (field = "password") =>
 
 const confirmPasswordRule = (targetField = "password") =>
   body("confirmPassword")
-    .exists({ checkFalsy: true })
-    .withMessage("Password confirmation is required.")
-    .bail()
+    .optional({ checkFalsy: true })
     .custom((val, { req }) => {
-      if (val !== req.body[targetField]) {
+      if (val && val !== req.body[targetField]) {
         throw new Error("Passwords do not match.");
       }
       return true;
@@ -99,12 +97,11 @@ export const registerRules = [
 export const loginRules = [
   body("email")
     .exists({ checkFalsy: true })
-    .withMessage("Email is required.")
+    .withMessage("Email or username is required.")
     .bail()
-    .isEmail()
-    .withMessage("A valid email address is required.")
-    .trim()
-    .normalizeEmail({ gmail_remove_dots: false, gmail_remove_subaddress: false }),
+    .isString()
+    .withMessage("Email or username must be a string.")
+    .trim(),
   body("password").exists({ checkFalsy: true }).withMessage("Password is required."),
 ];
 

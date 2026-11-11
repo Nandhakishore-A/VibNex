@@ -33,6 +33,7 @@ export default function Register() {
         username: username.trim().toLowerCase(),
         email: email.trim().toLowerCase(),
         password,
+        confirmPassword: password,
       });
       toast.success("Account created successfully!");
       if (res?.token) {
