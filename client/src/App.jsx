@@ -128,6 +128,10 @@ function AppRoutes() {
         }
       />
 
+      {/* Standalone Landing / Welcome page accessible directly at any time (logged-in or guest) */}
+      <Route path="/landing" element={<LandingPage />} />
+      <Route path="/welcome" element={<LandingPage />} />
+
       {/* Guest only authentication routes */}
       <Route element={<GuestOnlyRoute />}>
         <Route path="/login" element={<Login />} />

@@ -7,6 +7,7 @@ import {
   Bookmark,
   User as UserIcon,
   Settings,
+  Sparkles,
   Plus,
   LogOut,
 } from "lucide-react";
@@ -106,6 +107,13 @@ export default function LeftSidebar() {
             <div className="flex items-center gap-3.5">
               <Settings className="size-5 shrink-0" aria-hidden="true" />
               <span>Settings</span>
+            </div>
+          </NavLink>
+
+          <NavLink to="/landing" className={navItemClass}>
+            <div className="flex items-center gap-3.5">
+              <Sparkles className="size-5 shrink-0 text-cyan-400" aria-hidden="true" />
+              <span>Landing Page</span>
             </div>
           </NavLink>
         </nav>

@@ -11,6 +11,7 @@ import {
   Search,
   Settings as SettingsIcon,
   Shield,
+  Sparkles,
   Sun,
   User as UserIcon,
   X,
@@ -347,6 +348,16 @@ function UserMenu({ user, onLogout }) {
           >
             <Bookmark className="size-4 text-zinc-500" aria-hidden="true" />
             Saved posts
+          </Link>
+
+          <Link
+            to="/landing"
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2.5 px-3 py-2 text-sm transition-colors duration-fast hover:bg-zinc-50 dark:hover:bg-zinc-800/60"
+          >
+            <Sparkles className="size-4 text-cyan-400" aria-hidden="true" />
+            Landing Page
           </Link>
 
           <Link
