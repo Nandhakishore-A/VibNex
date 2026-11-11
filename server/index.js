@@ -67,7 +67,17 @@ app.use(
   })
 );
 
-// 4–5. Body parsers with a 10kb DoS guard.
+// 4. Ensure DB connectivity for serverless invocations (Vercel)
+app.use(async (_req, _res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
+// 5. Body parsers with a 10kb DoS guard.
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
@@ -151,7 +161,9 @@ const isTestRun =
   process.env.npm_lifecycle_event === "test" ||
   Boolean(process.argv[1] && process.argv[1].includes("test"));
 
-if (!isTestRun) {
+const isVercel = Boolean(process.env.VERCEL);
+
+if (!isTestRun && !isVercel) {
   start().catch((error) => {
     console.error("[server] Failed to start:", error);
     process.exit(1);
