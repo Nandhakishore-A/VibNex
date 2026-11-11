@@ -44,34 +44,50 @@ export const register = asyncHandler(async (req, res) => {
   const verificationTokenHash = hashToken(rawVerificationToken);
   const verificationTokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
+  // If SMTP is not actively configured, auto-verify user so they are not blocked
+  const shouldRequireVerification = Boolean(
+    process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS
+  );
+
   const user = await User.create({
     username,
     name,
     email,
     password,
     role: "user",
-    isVerified: false,
-    verificationTokenHash,
-    verificationTokenExpires,
+    isVerified: !shouldRequireVerification,
+    verificationTokenHash: shouldRequireVerification ? verificationTokenHash : undefined,
+    verificationTokenExpires: shouldRequireVerification ? verificationTokenExpires : undefined,
   });
 
-  // Dispatch real verification email
-  try {
-    await sendVerificationEmail({
-      to: user.email,
-      name: user.name,
-      token: rawVerificationToken,
+  if (shouldRequireVerification) {
+    try {
+      await sendVerificationEmail({
+        to: user.email,
+        name: user.name,
+        token: rawVerificationToken,
+      });
+    } catch (mailErr) {
+      console.error("[Auth] Failed to send verification email:", mailErr.message);
+    }
+
+    return res.status(201).json({
+      status: "success",
+      isVerified: false,
+      email: user.email,
+      message:
+        "Account registered successfully! Please check your email to verify your account before signing in.",
     });
-  } catch (mailErr) {
-    console.error("[Auth] Failed to send verification email:", mailErr.message);
   }
+
+  const token = generateToken(user._id);
 
   return res.status(201).json({
     status: "success",
-    isVerified: false,
-    email: user.email,
-    message:
-      "Account registered successfully! Please check your email to verify your account before signing in.",
+    isVerified: true,
+    token,
+    user: user.toPublicProfile({ viewerId: user._id }),
+    message: "Account registered successfully!",
   });
 });
 
@@ -172,8 +188,11 @@ export const login = asyncHandler(async (req, res) => {
     return res.status(403).json({ status: "error", message: ACCOUNT_UNAVAILABLE });
   }
 
-  // Gate login behind email verification
-  if (!user.isVerified) {
+  // Gate login behind email verification only if SMTP is actively configured
+  const shouldRequireVerification = Boolean(
+    process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS
+  );
+  if (shouldRequireVerification && !user.isVerified) {
     return res.status(403).json({
       status: "error",
       code: "EMAIL_NOT_VERIFIED",
@@ -181,6 +200,10 @@ export const login = asyncHandler(async (req, res) => {
         "Please verify your email address before signing in. Check your inbox for the verification link.",
       email: user.email,
     });
+  } else if (!user.isVerified) {
+    // In dev / when SMTP is not configured, auto-verify upon successful password match
+    user.isVerified = true;
+    await user.save();
   }
 
   const token = generateToken(user._id);
@@ -213,8 +236,10 @@ export const socialLogin = asyncHandler(async (req, res) => {
       username = `${baseUsername.slice(0, 12)}_${counter++}`;
     }
 
+    const cleanName = (name || baseUsername).replace(/[0-9]/g, "").trim() || "Social Explorer";
+
     user = await User.create({
-      name: name || baseUsername,
+      name: cleanName,
       username,
       email: cleanEmail,
       password: `Social_${crypto.randomBytes(16).toString("hex")}!1`,

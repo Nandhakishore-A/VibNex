@@ -28,14 +28,18 @@ export default function Register() {
     setError("");
 
     try {
-      await register({
+      const res = await register({
         name: fullName.trim(),
         username: username.trim().toLowerCase(),
         email: email.trim().toLowerCase(),
         password,
       });
       toast.success("Account created successfully!");
-      navigate("/login");
+      if (res?.token) {
+        navigate("/");
+      } else {
+        navigate("/login");
+      }
     } catch (err) {
       const msg = err.response?.data?.message || "Failed to create account. Please check your inputs.";
       setError(msg);
@@ -62,7 +66,7 @@ export default function Register() {
         window.location.href = "/";
       }
     } catch (err) {
-      toast.error("Social registration failed.");
+      toast.error("Social registration failed. Please ensure backend is running.");
     } finally {
       setLoading(false);
     }
@@ -74,20 +78,26 @@ export default function Register() {
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center bg-[#0E1520]/80 border border-slate-800/80 rounded-[32px] p-6 sm:p-10 shadow-2xl backdrop-blur-xl relative z-10">
-        {/* Left Side: Floating Nature & Vibe Cards (From Design Mockup) */}
+        {/* Left Side: Floating Nature & Vibe Cards */}
         <div className="hidden md:flex flex-col items-center justify-center relative min-h-[460px]">
-          <div className="w-56 h-40 rounded-2xl overflow-hidden border-2 border-cyan-500/30 shadow-xl shadow-cyan-500/20 transform -rotate-6 hover:rotate-0 transition-transform duration-300">
+          <div className="w-64 h-44 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-xl shadow-cyan-500/20 transform -rotate-6 hover:rotate-0 transition-transform duration-300 bg-slate-900">
             <img
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+              src="/images/auth-mountain.jpg"
               alt="Mountain peak"
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80";
+              }}
             />
           </div>
-          <div className="w-56 h-40 rounded-2xl overflow-hidden border-2 border-teal-500/30 shadow-2xl shadow-cyan-500/25 transform rotate-6 -mt-10 hover:rotate-0 transition-transform duration-300">
+          <div className="w-64 h-44 rounded-2xl overflow-hidden border-2 border-teal-500/40 shadow-2xl shadow-cyan-500/25 transform rotate-6 -mt-12 hover:rotate-0 transition-transform duration-300 bg-slate-900">
             <img
-              src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80"
+              src="/images/auth-forest.jpg"
               alt="Sunlight in forest"
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=600&q=80";
+              }}
             />
           </div>
         </div>
