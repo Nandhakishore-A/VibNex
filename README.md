@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![VIBNEX Design Showcase](docs/screenshots/vibnex-ui-showcase.jpg)
+![VIBNEX Web Application](docs/screenshots/01-landing.png)
 
 <br/>
 
@@ -41,59 +41,56 @@ Experience the live, production-deployed VIBNEX ecosystem across its independent
 | 🛡️ **Staff Administration Console** | [vib-nex-pk9o-nvqoj4q4i-nexus-forge1.vercel.app/login](https://vib-nex-pk9o-nvqoj4q4i-nexus-forge1.vercel.app/login) | Dedicated administrative portal for staff moderation and telemetry |
 | ⚡ **Backend REST API** | [vib-oh76nqalc-nexus-forge1.vercel.app/api/health](https://vib-oh76nqalc-nexus-forge1.vercel.app/api/health) | Serverless Express API health check and microservice gateway |
 
-> [!NOTE]
-> When accessing Vercel deployment preview links directly, if Vercel Authentication Protection is enabled on your project team, sign in with your Vercel account or promote the deployment to your custom production alias for public unauthenticated access.
-
 ---
 
-## 📸 UI Design & Experience Showcase
+## 📸 Original Application Interface Showcase
 
 VIBNEX delivers a distinctive, cyber-teal aesthetic (`#070A0F`, `#0E1520`, `#06B6D4`, `#00F2FE`) combining fluid micro-interactions with high-speed performance:
 
-![VIBNEX Design Showcase](docs/screenshots/vibnex-ui-showcase.jpg)
+### 1. Interactive Landing Experience (`/landing`)
+![VIBNEX Landing Experience](docs/screenshots/01-landing.png)
 
-### 💎 Signature Interface Modules:
-1. **Interactive 3D Landing Experience (`/landing`):**
+### 2. Home Feed & Real-Time Composer (`/`)
+![VIBNEX Social Feed](docs/screenshots/08-feed.png)
+
+### 3. Explore & Category Discovery (`/explore`)
+![VIBNEX Explore](docs/screenshots/02-explore.png)
+
+### 4. Authentication Suite (`/login` & `/register`)
+![VIBNEX Authentication](docs/screenshots/03-login.png)
+
+### 5. User Profile & Social Graph (`/profile/:username`)
+![VIBNEX Profile](docs/screenshots/05-profile.png)
+
+---
+
+## 💎 Signature Features
+
+1. **Interactive Landing Experience (`/landing`):**
    - Perspective-tilted 3D mobile application mockup with ambient cyan glow and floating user indicators.
    - Live interactive demo post with animated heart-counter, quick category pills (*All, Photography, Travel, Tech, Nature*), and real-time counter metrics.
    - Key platform metrics: **50K+ Active Users**, **1M+ Posts Shared**, **100K+ Connections**, **<50ms Real-Time Latency**.
+
 2. **Authentication Suite & 1-Click Social Logins (`/login`, `/register`):**
    - Split-screen visual layouts with floating scenic imagery, glassmorphic cards, and email/password validation.
    - 1-click **Google** and **GitHub** social login flows powered by `POST /api/auth/social`.
    - Secure cryptographic token-based email verification and password reset workflows.
+
 3. **Personalized Feed & Rich Composer (`/`):**
    - 3-column desktop layout (Left Navigation, Main Timeline, Right Discovery Widget).
    - Rich post creator supporting multi-media uploads, captions, polls, and feelings.
    - Interactive post cards with like pulse animations, instant comments, bookmarks, and copy-link triggers.
+
 4. **Real-Time Direct Messaging (`/messages`):**
    - Sub-50ms Socket.IO bi-directional chat system with active contact lists and live presence indicators.
    - Typing indicators, message history retention, and unread counters.
+
 5. **Explore & User Profiles (`/explore`, `/profile/:username`):**
    - Category filter pills (*For You, Trending, People, Photos, Videos, Tags*).
    - Panoramic cover photos, verified profile badges, follow/unfollow relationship graph, and tabbed archives (*Posts, Media, Bookmarks, Liked*).
+
 6. **Isolated Staff Administration Console (`admin/`):**
    - Live telemetry KPI cards, MongoDB Atlas connection health, user moderation (block/unblock, delete), post moderation (hide/unhide), and comment audit logs.
-
----
-
-## ☁️ Cloudinary Media Architecture
-
-VIBNEX utilizes Cloudinary CDN for optimized, responsive media transformation, automated WebP delivery, and organized cloud folder structures:
-
-<div align="center">
-
-![Cloudinary Storage Structure](docs/screenshots/cloudinary-storage-structure.png)
-
-</div>
-
-### Storage Organization:
-```text
-mern_stack_project_storage/
-└── VibNex/
-    ├── avatars/     # User profile photos and avatars
-    ├── covers/      # Panoramic cover banners
-    └── posts/       # Post attachments, photography, and video media
-```
 
 ---
 
@@ -173,7 +170,7 @@ VibNex/
 │   └── package.json
 │
 ├── docs/
-│   └── screenshots/                   # Production UI mockups and architecture diagrams
+│   └── screenshots/                   # Production UI screenshots and application views
 └── README.md
 ```
 
@@ -187,38 +184,7 @@ git clone https://github.com/Nandhakishore-A/VibNex.git
 cd VibNex
 ```
 
-### 2. Configure Environment Variables
-
-Create `.env` inside `server/` using `server/.env.example` as a template:
-```env
-PORT=5000
-NODE_ENV=development
-MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/VibNex?retryWrites=true&w=majority
-JWT_SECRET=your_super_secret_jwt_key_at_least_32_characters
-JWT_EXPIRES_IN=7d
-CLIENT_URL=http://localhost:5173
-ADMIN_URL=http://localhost:5174
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-CLOUDINARY_FOLDER=mern_stack_project_storage/VibNex
-ADMIN_EMAIL=admin@vibnex.dev
-ADMIN_USERNAME=vibnexadmin
-ADMIN_PASSWORD=your_secure_admin_password
-```
-
-Inside `client/.env`:
-```env
-VITE_API_URL=http://localhost:5000/api
-VITE_SOCKET_URL=http://localhost:5000
-```
-
-Inside `admin/.env`:
-```env
-VITE_API_URL=http://localhost:5000/api
-```
-
-### 3. Run Development Servers
+### 2. Run Development Servers
 ```bash
 # Terminal 1: Backend API
 cd server && npm run dev
@@ -241,28 +207,18 @@ VIBNEX is pre-configured for seamless deployment across three distinct Vercel pr
 - **Root Directory:** `server`
 - **Build Command:** *(Leave empty)*
 - **Output Directory:** `.`
-- **Environment Variables:**
-  - `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `NODE_ENV=production`
-  - `CLIENT_URL=https://vib-g4ytxl9n8-nexus-forge1.vercel.app`
-  - `ADMIN_URL=https://vib-nex-pk9o-nvqoj4q4i-nexus-forge1.vercel.app`
-  - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, `CLOUDINARY_FOLDER`
 
 ### 2. Client Application (`client/`)
 - **Framework Preset:** Vite
 - **Root Directory:** `client`
 - **Build Command:** `npm run build`
 - **Output Directory:** `dist`
-- **Environment Variables:**
-  - `VITE_API_URL=https://vib-oh76nqalc-nexus-forge1.vercel.app/api`
-  - `VITE_SOCKET_URL=https://vib-oh76nqalc-nexus-forge1.vercel.app`
 
 ### 3. Staff Admin Console (`admin/`)
 - **Framework Preset:** Vite
 - **Root Directory:** `admin`
 - **Build Command:** `npm run build`
 - **Output Directory:** `dist`
-- **Environment Variables:**
-  - `VITE_API_URL=https://vib-oh76nqalc-nexus-forge1.vercel.app/api`
 
 ---
 
